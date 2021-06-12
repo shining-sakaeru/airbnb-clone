@@ -94,7 +94,7 @@ class Room(core_models.TimeStampedModel):
     # ForeignKey : many-to-on (host 1명 - room 10개 예약)
     # user_models.User, on_delete=models.CASCADE : user 삭제시 아랫것(rooms)도 함께 삭제
     room_type = models.ForeignKey("RoomType", on_delete=SET_NULL, null=True)
-    amenity = models.ManyToManyField("Amenity", blank=True)
+    amenities = models.ManyToManyField("Amenity", blank=True)
     facilies = models.ManyToManyField("Facility", blank=True)
     house_rules = models.ManyToManyField("HouseRule", blank=True)
 

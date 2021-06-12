@@ -33,14 +33,11 @@ class RoomAdmin(admin.ModelAdmin):
         (
             "More About the Space",
             {
-                "classes": ("collapse",),
-                "fields": ("amenity", "facilies", "house_rules"),
+                "classes": ("collapse"),  # 접었다 폈다
+                "fields": ("amenities", "facilies", "house_rules"),
             },
         ),
-        (
-            "Last Details",
-            {"fields": ("host",)},
-        ),
+        ("Last Details", {"fields": ("host",)}),
     )
 
     list_display = (
@@ -55,14 +52,17 @@ class RoomAdmin(admin.ModelAdmin):
         "check_in",
         "check_out",
         "instant_book",
+        "count_amenities",
     )
+
+    # ordering = ("name", "price", "bedrooms")
 
     list_filter = (
         "instant_book",
         "host__superhost",
         "host__gender",
         "room_type",
-        "amenity",
+        "amenities",
         "facilies",
         "house_rules",
         "city",
@@ -72,11 +72,13 @@ class RoomAdmin(admin.ModelAdmin):
     search_fields = ("=city", "^host__username")
 
     # filter_horizontal : many-to-many Only
-    filter_horizontal = (
-        "amenity",
-        "facilies",
-        "house_rules",
-    )
+    filter_horizontal = ("amenities", "facilies", "house_rules")
+
+    def count_amenities(self, obj):  # obj = 객실
+        print(obj.amenities.all())
+        return "Potato"
+
+    count_amenities.short_description = "hello there!"  # 클릭 안되게
 
 
 @admin.register(models.Photo)
