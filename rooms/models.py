@@ -95,7 +95,7 @@ class Room(core_models.TimeStampedModel):
     # user_models.User, on_delete=models.CASCADE : user 삭제시 아랫것(rooms)도 함께 삭제
     room_type = models.ForeignKey("RoomType", related_name="rooms", on_delete=SET_NULL, null=True)
     amenities = models.ManyToManyField("Amenity", related_name="rooms", blank=True)
-    facilies = models.ManyToManyField("Facility", related_name="rooms", blank=True)
+    facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
     house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
 
     def __str__(self):

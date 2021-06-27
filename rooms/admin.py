@@ -63,7 +63,7 @@ class RoomAdmin(admin.ModelAdmin):
             "More About the Space",
             {
                 # "classes": ("collapse"),  # 접었다 폈다
-                "fields": ("amenities", "facilies", "house_rules"),
+                "fields": ("amenities", "facilities", "house_rules"),
             },
         ),
         ("Last Details", {"fields": ("host",)}),
@@ -94,7 +94,7 @@ class RoomAdmin(admin.ModelAdmin):
         "host__gender",
         "room_type",
         "amenities",
-        "facilies",
+        "facilities",
         "house_rules",
         "city",
         "country",
@@ -105,11 +105,13 @@ class RoomAdmin(admin.ModelAdmin):
     search_fields = ("=city", "^host__username")
 
     # filter_horizontal : many-to-many Only
-    filter_horizontal = ("amenities", "facilies", "house_rules")
+    filter_horizontal = ("amenities", "facilities", "house_rules")
 
     def count_amenities(self, obj):  # obj = 객실
         print(obj.amenities.all())
         return obj.amenities.count()
+
+    count_amenities.short_description = "Amenity Count"
 
     def count_photos(self, obj):
         return obj.photos.count()
