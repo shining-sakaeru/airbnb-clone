@@ -114,8 +114,7 @@ class RoomAdmin(admin.ModelAdmin):
     def count_photos(self, obj):
         return obj.photos.count()
 
-    # count_amenities.short_description = "hello there!"  # 클릭 안되게
-
+    count_photos.short_description = "Photo Count"    # add
 
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
