@@ -39,7 +39,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["django_countries"]  # 다른사람이 만든 APP import 위함
+THIRD_PARTY_APPS = ["django_countries", "django_seed"]  # 다른사람이 만든 APP import 위함
 
 PROJECT_APPS = [
     "core.apps.CoreConfig",
