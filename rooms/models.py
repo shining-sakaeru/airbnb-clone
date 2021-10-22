@@ -1,10 +1,9 @@
 from django.db import models
 from django.urls import reverse
-from django.db.models import manager
 from django.db.models.deletion import SET_NULL
-from django.db.models.fields import files
 from django_countries.fields import CountryField
 from core import models as core_models
+from cal import Calendar
 
 # from users import models as user_models
 import users
@@ -128,3 +127,8 @@ class Room(core_models.TimeStampedModel):
     def get_next_four_photos(self):
         photos = self.photos.all()[1:5]
         return photos
+
+    def get_calendars(self):
+        calendar = Calendar(2019, 11)
+        print(calendar.get_month())
+        return False
