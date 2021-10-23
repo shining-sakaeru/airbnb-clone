@@ -1,4 +1,5 @@
 from django.db import models
+from . import managers
 
 
 class TimeStampedModel(models.Model):
@@ -9,6 +10,7 @@ class TimeStampedModel(models.Model):
         auto_now_add=True
     )  # auto_now_add는 model update되면 시간을 자동 저장해줌
     updated = models.DateTimeField(auto_now_add=True)
+    objects = managers.CustomModelManager()
 
     class Meta:
         abstract = True
